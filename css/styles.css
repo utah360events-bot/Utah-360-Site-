@@ -1,10 +1,10 @@
 /* ============================================================
    Utah 360 Events — v2
    Black & white. Editorial. Image-first.
-   Fraunces (display serif) + DM Sans (body)
+   Cormorant Garamond (display serif) + Outfit (body)
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,300..600;1,9..40,300..600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Outfit:wght@100..900&display=swap');
 
 /* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,8 +23,8 @@ button { cursor: pointer; }
   --dust:   #B4B1A8;
   --smoke:  #7A786F;
 
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Outfit', system-ui, sans-serif;
 
   --max-w:  1200px;
   --nav-h:  64px;
@@ -43,13 +43,33 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
+  /* Cormorant Garamond's heaviest cut is 700. Skip synthetic bold
+     when a heading asks for 800 or 900. */
+  font-synthesis: none;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
 h1 em, h2 em, h3 em {
   font-style: italic;
+}
+
+/* Display faces outside headings that still request 800/900.
+   Same reason as headings: use Cormorant Bold, not a faux weight.
+   The attribute selector covers the inline price on services.html. */
+.nav-logo-text,
+.hero-badge-num,
+.price-num,
+.cta-strip .phone-link,
+.pricing-extra-note strong,
+.price-card-amount,
+.about-float-num,
+.mission-block blockquote,
+.footer-brand-text,
+.how-num,
+.reviews-score,
+[style*="var(--font-display)"] {
+  font-synthesis: none;
 }
 
 p { color: var(--smoke); line-height: 1.7; }
@@ -585,7 +605,7 @@ a, label { -webkit-tap-highlight-color: transparent; }
   vertical-align: -1.1rem;
   color: var(--stone);
   margin-right: 4px;
-  font-family: Georgia, serif;
+  font-family: var(--font-display);
 }
 
 .proof-attribution {
