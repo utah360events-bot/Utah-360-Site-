@@ -1255,6 +1255,109 @@ a, label { -webkit-tap-highlight-color: transparent; }
   flex-shrink: 0;
 }
 
+.pricing-extra-cta {
+  display: inline-block;
+  margin-left: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+/* Seasonal offer — no public price on this card */
+.holiday-card {
+  max-width: 820px;
+  margin: 2.5rem auto 0;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 4px;
+  padding: 2.5rem 2.25rem;
+}
+
+.holiday-card .eyebrow { color: rgba(255,255,255,0.55); }
+
+.holiday-card h2 {
+  color: var(--paper);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+}
+
+.holiday-lead {
+  color: rgba(255,255,255,0.75);
+  max-width: 40rem;
+  font-size: 1.02rem;
+}
+
+.holiday-includes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin: 1.35rem 0 1.75rem;
+}
+
+.holiday-includes li {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.86);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.holiday-includes li::before {
+  content: '—';
+  color: rgba(255,255,255,0.4);
+}
+
+.holiday-teaser {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  margin-top: 1.5rem;
+  padding: 1.6rem 1.75rem;
+  background: var(--ink);
+  border-radius: 4px;
+}
+
+.holiday-teaser-copy { max-width: 40rem; }
+
+.holiday-teaser .service-tile-tag { color: rgba(255,255,255,0.5); }
+
+.holiday-teaser h3 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--paper);
+  margin-bottom: 0.35rem;
+}
+
+.holiday-teaser p {
+  color: rgba(255,255,255,0.72);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.holiday-teaser-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.holiday-text-link {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+}
+
+.holiday-text-link:hover { color: var(--paper); border-bottom-color: var(--paper); }
+
 /* ── COMPARISON TABLE ── */
 .compare-table {
   width: 100%;
@@ -1581,6 +1684,47 @@ a, label { -webkit-tap-highlight-color: transparent; }
   font-size: 0.75rem;
   color: var(--dust);
   margin-top: 0.75rem;
+}
+
+.form-preselect {
+  font-size: 0.92rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid var(--stone);
+  border-radius: 4px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-date-callout {
+  background: var(--cream);
+  border: 1px solid var(--stone);
+  border-left: 3px solid var(--ink);
+  border-radius: 4px;
+  padding: 1.05rem 1.15rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-date-callout.is-active {
+  background: var(--paper);
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+.form-date-kicker {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 0.55rem;
+}
+
+.form-date-hint {
+  font-size: 0.78rem;
+  color: var(--smoke);
+  margin-top: 0.45rem;
+  line-height: 1.5;
 }
 
 /* Form success / error states */
@@ -2258,6 +2402,7 @@ hr.thin {
   .service-detail-grid { grid-template-columns: 1fr; gap: 3rem; }
   .service-detail-grid.flip { direction: ltr; }
   .pricing-cards { grid-template-columns: 1fr; }
+  .holiday-teaser { flex-direction: column; align-items: flex-start; }
   .services-row { grid-template-columns: 1fr; }
   .footer-copy { text-align: left; }
 
@@ -2360,6 +2505,7 @@ hr.thin {
   .pricing-cards { border-radius: 0; }
   .price-card { padding: 1.75rem; }
   .price-card-amount { font-size: 2.8rem; }
+  .holiday-card { padding: 1.75rem 1.35rem; }
 
   .mission-block blockquote { font-size: 1.4rem; }
 }

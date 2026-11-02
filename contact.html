@@ -93,6 +93,15 @@
           <p class="form-sub">We'll get back to you with availability, pricing, and everything you need to confirm your booking.</p>
 
           <form id="contact-quote-form" action="https://formspree.io/f/maqzjqal" method="POST">
+            <p class="form-preselect" id="form-preselect" hidden></p>
+            <div class="form-date-callout" id="date-callout">
+              <p class="form-date-kicker">Your date comes first</p>
+              <div class="form-group">
+                <label for="event-date">Event date</label>
+                <input type="date" id="event-date" name="event_date" data-fs-field />
+                <p class="form-date-hint">Utah weekends book up, especially November through January. Tell us the date and we'll check that night.</p>
+              </div>
+            </div>
             <div data-fs-success class="form-success" style="display:none;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
               <div>
@@ -140,17 +149,25 @@
                 <label for="booth">Which booth?</label>
                 <select id="booth" name="booth_type" data-fs-field>
                   <option value="" disabled selected>Select…</option>
-                  <option>360° Photo Booth</option>
-                  <option>Digital Photo Booth</option>
-                  <option>Not sure yet</option>
+                  <option value="360° Photo Booth">360° Photo Booth</option>
+                  <option value="Digital Photo Booth">Digital Photo Booth</option>
+                  <option value="Not sure yet">Not sure yet</option>
                 </select>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="event-date">Event Date</label>
-                <input type="date" id="event-date" name="event_date" data-fs-field />
+                <label for="package">Package</label>
+                <select id="package" name="package" data-fs-field>
+                  <option value="" disabled selected>Select…</option>
+                  <option value="Party Starter">Party Starter — 2 hours</option>
+                  <option value="Life of the Party">Life of the Party — 3 hours</option>
+                  <option value="Extra hour">Extra hour on a 360° booking</option>
+                  <option value="Digital photo booth">Digital photo booth</option>
+                  <option value="Corporate Holiday">Corporate Holiday — 2 hours + branding</option>
+                  <option value="Not sure yet">Not sure yet</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="location">City / Venue</label>
@@ -253,6 +270,71 @@
       </div>
     </div>
   </section>
+
+  <!-- PACKAGE + DATE PREFILL from ?booth=&package=&event=&focus= -->
+  <script>
+    (function () {
+      var form = document.getElementById('contact-quote-form');
+      if (!form) return;
+
+      function readParams() {
+        if (window.location.search && window.location.search.length > 1) {
+          return new URLSearchParams(window.location.search);
+        }
+        var hash = window.location.hash || '';
+        var q = hash.indexOf('?');
+        if (q !== -1) return new URLSearchParams(hash.slice(q + 1));
+        return new URLSearchParams();
+      }
+
+      var packages = {
+        'party-starter': { value: 'Party Starter', booth: '360° Photo Booth', label: 'Party Starter' },
+        'life-of-the-party': { value: 'Life of the Party', booth: '360° Photo Booth', label: 'Life of the Party' },
+        'extra-hour': { value: 'Extra hour', booth: '360° Photo Booth', label: 'an extra hour' },
+        'digital': { value: 'Digital photo booth', booth: 'Digital Photo Booth', label: 'the Digital photo booth' },
+        'corporate-holiday': { value: 'Corporate Holiday', booth: '360° Photo Booth', event: 'Corporate Event', label: 'Corporate Holiday' }
+      };
+      var booths = {
+        '360': '360° Photo Booth',
+        'digital': 'Digital Photo Booth'
+      };
+
+      var params = readParams();
+      var boothKey = (params.get('booth') || '').toLowerCase();
+      var pkgKey = (params.get('package') || '').toLowerCase();
+      var eventKey = (params.get('event') || '').toLowerCase();
+      var focus = (params.get('focus') || '').toLowerCase();
+      var pkg = packages[pkgKey];
+
+      var boothSelect = document.getElementById('booth');
+      var pkgSelect = document.getElementById('package');
+      var eventSelect = document.getElementById('event-type');
+      var dateInput = document.getElementById('event-date');
+      var note = document.getElementById('form-preselect');
+      var callout = document.getElementById('date-callout');
+
+      if (booths[boothKey] && boothSelect) boothSelect.value = booths[boothKey];
+      if (pkg) {
+        if (pkgSelect) pkgSelect.value = pkg.value;
+        if (boothSelect && pkg.booth) boothSelect.value = pkg.booth;
+        if (eventSelect && pkg.event) eventSelect.value = pkg.event;
+      }
+      if (eventKey === 'corporate' && eventSelect) eventSelect.value = 'Corporate Event';
+
+      if (note && pkg) {
+        note.hidden = false;
+        note.textContent = "You're inquiring about " + pkg.label + ". Add your date and we'll check that night.";
+      }
+
+      var highlightDate = !!(pkg || booths[boothKey] || focus === 'date');
+      if (highlightDate && callout) callout.classList.add('is-active');
+      if (highlightDate && dateInput) {
+        window.setTimeout(function () {
+          dateInput.focus({ preventScroll: true });
+        }, 350);
+      }
+    })();
+  </script>
 
   <!-- FORM HANDLER -->
   <script>
