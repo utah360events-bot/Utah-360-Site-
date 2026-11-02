@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://utah360events.com/sitemap.xml

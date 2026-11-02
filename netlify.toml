@@ -1,0 +1,40 @@
+# Extensionless canonicals for the local SEO landings.
+# These files also exist as .html. Force the .html URL to the
+# self-referencing canonical so the two addresses do not compete.
+# No build command here — publish settings stay in the Netlify UI.
+
+[[redirects]]
+  from = "/360-photo-booth-provo-wedding.html"
+  to = "/360-photo-booth-provo-wedding"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/corporate-photo-booth-salt-lake-city.html"
+  to = "/corporate-photo-booth-salt-lake-city"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/holiday-party-photo-booth-utah-county.html"
+  to = "/holiday-party-photo-booth-utah-county"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wedding-360-booth-orem-lehi-american-fork.html"
+  to = "/wedding-360-booth-orem-lehi-american-fork"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/digital-photo-booth-rental-utah.html"
+  to = "/digital-photo-booth-rental-utah"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/360-photo-booth-rental-salt-lake-city.html"
+  to = "/360-photo-booth-rental-salt-lake-city"
+  status = 301
+  force = true
