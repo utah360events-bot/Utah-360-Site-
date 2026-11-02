@@ -23,7 +23,10 @@
     '.about-split',
     '.service-detail-grid',
     '.feature-card',
-    '.how-step'
+    '.how-step',
+    '.city-card',
+    '.choice-card',
+    '.landing-quote'
   ].join(', ');
 
   var targets = Array.prototype.slice.call(document.querySelectorAll(selectors));
@@ -61,4 +64,40 @@
 
   targets.forEach(function (el) { fadeObs.observe(el); });
 
+})();
+
+/* Events menu — not tied to scroll motion */
+(function () {
+  'use strict';
+
+  var drops = document.querySelectorAll('.nav-dropdown');
+  if (!drops.length) return;
+
+  drops.forEach(function (drop) {
+    var btn = drop.querySelector('.nav-dropdown-label');
+    if (!btn) return;
+
+    btn.addEventListener('click', function () {
+      var open = drop.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  document.addEventListener('click', function (event) {
+    drops.forEach(function (drop) {
+      if (drop.contains(event.target)) return;
+      drop.classList.remove('is-open');
+      var btn = drop.querySelector('.nav-dropdown-label');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key !== 'Escape') return;
+    drops.forEach(function (drop) {
+      drop.classList.remove('is-open');
+      var btn = drop.querySelector('.nav-dropdown-label');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  });
 })();
