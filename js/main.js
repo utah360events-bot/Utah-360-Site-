@@ -19,6 +19,8 @@
     '.diff-item',
     '.faq-item',
     '.price-card',
+    '.holiday-card',
+    '.holiday-teaser',
     '.home-form-inner > *',
     '.about-split',
     '.service-detail-grid',
