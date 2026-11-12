@@ -45,6 +45,12 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/faq.html"
+  to = "/faq"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/llms.txt"
   [headers.values]

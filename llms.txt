@@ -17,7 +17,7 @@
 - [Services and packages](https://utah360events.com/services.html): package details and current pricing
 - [About](https://utah360events.com/about.html): who we are
 - [Contact](https://utah360events.com/contact.html): inquiry form for your date and venue
-- [FAQ](https://utah360events.com/faq.html): service area, both booths, insurance, and how to book
+- [FAQ](https://utah360events.com/faq): service area, both booths, insurance, and how to book
 
 ## Event and city pages
 
