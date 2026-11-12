@@ -1,7 +1,7 @@
 # Extensionless canonicals for the local SEO landings.
 # These files also exist as .html. Force the .html URL to the
 # self-referencing canonical so the two addresses do not compete.
-# No build command here — publish settings stay in the Netlify UI.
+# No build command here, publish settings stay in the Netlify UI.
 
 [[redirects]]
   from = "/360-photo-booth-provo-wedding.html"
@@ -38,3 +38,14 @@
   to = "/360-photo-booth-rental-salt-lake-city"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/360-photo-booth-rental-park-city.html"
+  to = "/360-photo-booth-rental-park-city"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
