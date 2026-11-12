@@ -24,18 +24,50 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
-        "@id": "https://utah360events.com/#business",
-        "name": "Utah 360 Events",
-        "url": "https://utah360events.com/",
-        "telephone": "+13853520274",
-        "email": "utah360events@gmail.com",
-        "image": "https://utah360events.com/assets/images/360booth1.png",
-        "areaServed": [
-          { "@type": "AdministrativeArea", "name": "Utah County, Utah" },
-          { "@type": "AdministrativeArea", "name": "Salt Lake County, Utah" }
-        ]
-      },
+          "@type": "Service",
+          "@id": "https://utah360events.com/360-photo-booth-provo-wedding#service",
+          "name": "360 Photo Booth for Provo Weddings",
+          "url": "https://utah360events.com/360-photo-booth-provo-wedding",
+          "provider": {
+            "@id": "https://utah360events.com/#business"
+          },
+          "areaServed": [
+            {
+              "@type": "City",
+              "name": "Provo",
+              "containedInPlace": {
+                "@type": "State",
+                "name": "Utah"
+              }
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Utah County",
+              "containedInPlace": {
+                "@type": "State",
+                "name": "Utah"
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://utah360events.com/360-photo-booth-provo-wedding#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://utah360events.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Provo weddings",
+              "item": "https://utah360events.com/360-photo-booth-provo-wedding"
+            }
+          ]
+        },
       {
         "@type": "FAQPage",
         "@id": "https://utah360events.com/360-photo-booth-provo-wedding#faq",
@@ -43,12 +75,12 @@
           {
             "@type": "Question",
             "name": "How much space does the 360 booth need at a reception?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Plan for a clear area roughly 10×10 ft, and confirm it with us when you inquire." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Confirm the room when you inquire." }
           },
           {
             "@type": "Question",
             "name": "Do guests get their videos right away?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Guests can take the clip by AirDrop, text, or QR code, and the couple gets every clip afterward." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Videos are shared directly to guests by AirDrop or text, and the couple gets every clip afterward." }
           },
           {
             "@type": "Question",
@@ -59,11 +91,6 @@
             "@type": "Question",
             "name": "Do you travel to Provo Canyon or Sundance-area venues?",
             "acceptedAnswer": { "@type": "Answer", "text": "Send the venue with your inquiry. We confirm access and timing for Provo Canyon and Sundance-area rooms before you book." }
-          },
-          {
-            "@type": "Question",
-            "name": "How far ahead should we book?",
-            "acceptedAnswer": { "@type": "Answer", "text": "May through October weekends fill fast, so inquire early. A date a few months out is easier to hold than a date a few weeks out." }
           },
           {
             "@type": "Question",
@@ -85,7 +112,7 @@
   <nav class="nav">
     <div class="nav-inner">
       <a class="nav-logo" href="/">
-        <img src="assets/Logo/2.png" alt="Utah 360 Events, photo booth rental for Utah County and Salt Lake County" />
+        <img src="assets/Logo/2.png" alt="Utah 360 Events, photo booth rental for Utah County, Salt Lake County, and Park City" />
       </a>
       <input type="checkbox" id="nav-toggle" class="nav-toggle" />
       <label for="nav-toggle" class="hamburger" aria-label="Toggle menu">
@@ -95,6 +122,7 @@
         <li><a href="/">Home</a></li>
         <li><a href="/services">Services</a></li>
         <li><a href="/about">About</a></li>
+        <li><a href="/faq">FAQ</a></li>
         <li class="nav-dropdown">
           <button type="button" class="nav-dropdown-label" id="events-menu-label" aria-haspopup="true" aria-expanded="false">Where we serve</button>
           <ul class="nav-dropdown-menu" aria-labelledby="events-menu-label">
@@ -104,6 +132,7 @@
             <li><a href="/wedding-360-booth-orem-lehi-american-fork">Orem, Lehi &amp; American Fork</a></li>
             <li><a href="/digital-photo-booth-rental-utah">Digital photo booth</a></li>
             <li><a href="/360-photo-booth-rental-salt-lake-city">Salt Lake 360 booth</a></li>
+            <li><a href="/360-photo-booth-rental-park-city">Park City</a></li>
           </ul>
         </li>
         <li><a class="nav-cta" href="/#quote-form">Get a Quote</a></li>
@@ -119,7 +148,7 @@
         <p>A slow-motion 360 booth for the reception. An attendant stays with the platform, the overlay carries your names, and guests leave with a clip they can send before the send-off.</p>
         <div class="hero-actions">
           <a class="btn btn-fill" href="/#quote-form">Check my wedding date</a>
-          <a class="hero-phone" href="tel:+13853520274">(385) 352-0274</a>
+          <a class="hero-phone" href="tel:+13854049829">(385) 404-9829</a>
         </div>
       </div>
     </div>
@@ -138,7 +167,7 @@
           <h2 class="landing-h2">Why couples in Provo add a 360 booth</h2>
           <p>A Provo reception already has the long table, the family from out of town, and a dance floor that wakes up after dinner. The 360 booth is where that energy goes between songs. A camera arm circles the platform in slow motion. Up to five guests step on for each spin, and every group walks away with a video of their own.</p>
           <p>Couples book it because posed portraits cannot hold the whole room. The booth can. Friends who will not stand still for a photographer will wait in this line, especially once the first clip starts making the rounds. It is built for Utah County weddings: an attendant who keeps the line kind, and a moment people still pull up on their phones the next morning.</p>
-          <p>If the party is north of Provo, the <a href="/wedding-360-booth-orem-lehi-american-fork">Orem, Lehi, and American Fork wedding page</a> covers those rooms. If you want still photos instead of slow motion, look at the <a href="/digital-photo-booth-rental-utah">digital photo booth</a>. Or start from the <a href="/">homepage</a> and tell us the date.</p>
+          <p>If the party is north of Provo, the <a href="/wedding-360-booth-orem-lehi-american-fork">Orem, Lehi, and American Fork wedding page</a> covers those rooms. For a Park City or Deer Valley wedding, see the <a href="/360-photo-booth-rental-park-city">Park City 360 booth page</a>. If you want still photos instead of slow motion, look at the <a href="/digital-photo-booth-rental-utah">digital photo booth</a>. Or start from the <a href="/">homepage</a> and tell us the date.</p>
         </div>
       </div>
     </div>
@@ -158,7 +187,7 @@
           <ul class="incl-list">
             <li><span class="check-mark">✓</span><span>An attendant for the whole rental, from the first guest to the last spin.</span></li>
             <li><span class="check-mark">✓</span><span>A custom video overlay with your names, the date, and your wedding colors.</span></li>
-            <li><span class="check-mark">✓</span><span>Instant sharing by AirDrop, text, or QR code while the reception is still going.</span></li>
+            <li><span class="check-mark">✓</span><span>Videos shared directly to guests by AirDrop or text while the reception is still going.</span></li>
             <li><span class="check-mark">✓</span><span>A full gallery of every clip for the couple afterward.</span></li>
             <li><span class="check-mark">✓</span><span>Setup and teardown. We arrive before guests and leave the floor clear. Setup time is not part of your rental hours.</span></li>
             <li><span class="check-mark">✓</span><span>Props chosen for the wedding, plus the bubble machine and red carpet that come with the 360 booth.</span></li>
@@ -181,8 +210,8 @@
           <p>Provo halls along Center Street and University Avenue, garden ceremonies that move inside for the party, and barns south of the city all work when there is a clear patch of floor off the buffet. Provo Canyon and Sundance-area venues are a question of access and timing. Inquire with the venue name and we will confirm it before you hold the date. This is Utah County travel, talked through one room at a time.</p>
         </article>
         <article class="city-card">
-          <h3>Space and power needs</h3>
-          <p>Plan for a clear area roughly 10×10 ft so the arm can turn without clipping a chair. We also look at ceiling height. A standard wall outlet is usually enough. Tell us about the room, or send a photo of the corner you have in mind, and we will confirm power and layout when you inquire.</p>
+          <h3>The room</h3>
+          <p>Confirm the room when you inquire. Tell us about the space, or send a photo of the corner you have in mind, and we will tell you whether it works before you hold the date.</p>
         </article>
         <article class="city-card">
           <h3>What to tell the venue</h3>
@@ -209,7 +238,7 @@
           <div class="how-num">02</div>
           <div class="how-body">
             <h3>We check the room</h3>
-            <p>We reply the same day, usually within a few hours, and confirm the footprint, power, and overlay details with you.</p>
+            <p>We reply the same day, usually within a few hours, and confirm the room and overlay details with you.</p>
           </div>
         </div>
         <div class="how-connector" aria-hidden="true"></div>
@@ -238,7 +267,7 @@
       <h2 class="landing-h2">Reviews from Utah County couples</h2>
       <div style="max-width: 760px; margin-top: 2rem;">
         <blockquote class="landing-quote">
-          <p>"Biggest hit of the night for our wedding reception. Everyone loved it! The bubble guns look amazing in the slow motion video — can't wait to have them back at a future event!"</p>
+          <p>"Biggest hit of the night for our wedding reception. Everyone loved it! The bubble guns look amazing in the slow motion video, can't wait to have them back at a future event!"</p>
           <cite>Jared H. · Wedding reception</cite>
         </blockquote>
         <blockquote class="landing-quote">
@@ -256,11 +285,11 @@
       <div class="faq-list" style="margin-top: 1.5rem;">
         <div class="faq-item">
           <p class="faq-q">How much space does the 360 booth need at a reception?</p>
-          <p class="faq-a">Plan for a clear area roughly 10×10 ft, and confirm it with us when you inquire.</p>
+          <p class="faq-a">Confirm the room when you inquire.</p>
         </div>
         <div class="faq-item">
           <p class="faq-q">Do guests get their videos right away?</p>
-          <p class="faq-a">Yes. Guests can take the clip by AirDrop, text, or QR code, and the couple gets every clip afterward.</p>
+          <p class="faq-a">Yes. Videos are shared directly to guests by AirDrop or text, and the couple gets every clip afterward.</p>
         </div>
         <div class="faq-item">
           <p class="faq-q">Can the video overlay match our wedding colors and names?</p>
@@ -269,10 +298,6 @@
         <div class="faq-item">
           <p class="faq-q">Do you travel to Provo Canyon or Sundance-area venues?</p>
           <p class="faq-a">Send the venue with your inquiry. We confirm access and timing for Provo Canyon and Sundance-area rooms before you book.</p>
-        </div>
-        <div class="faq-item">
-          <p class="faq-q">How far ahead should we book?</p>
-          <p class="faq-a">May through October weekends fill fast, so inquire early. A date a few months out is easier to hold than a date a few weeks out.</p>
         </div>
         <div class="faq-item">
           <p class="faq-q">What does it cost?</p>
@@ -286,7 +311,7 @@
     <div class="container">
       <p>Tell us your date and venue. We reply the same day.</p>
       <h2>Check your wedding date</h2>
-      <a href="tel:+13853520274" class="phone-link">(385) 352-0274</a>
+      <a href="tel:+13854049829" class="phone-link">(385) 404-9829</a>
       <a href="mailto:utah360events@gmail.com" class="email-link">utah360events@gmail.com</a>
       <div style="margin-top: 2.5rem;">
         <a class="btn btn-fill-light" href="/#quote-form">Check my wedding date</a>
@@ -304,12 +329,13 @@
           <a href="/">Home</a>
           <a href="/services">Services</a>
           <a href="/about">About</a>
+          <a href="/faq">FAQ</a>
           <a href="/#quote-form">Get a Quote</a>
         </nav>
-        <p class="footer-copy">© 2026 Utah 360 Events &nbsp;·&nbsp; Utah County &amp; Salt Lake County</p>
+        <p class="footer-copy">© 2026 Utah 360 Events &nbsp;·&nbsp; Utah County, Salt Lake County &amp; Park City</p>
       </div>
-      <nav class="footer-serve" aria-label="Where we serve">
-        <p class="footer-serve-label">Where we serve</p>
+      <nav class="footer-serve" aria-label="Areas we serve">
+        <p class="footer-serve-label">Areas we serve</p>
         <div class="footer-serve-links">
           <a class="active" href="/360-photo-booth-provo-wedding">Provo weddings</a>
           <a href="/corporate-photo-booth-salt-lake-city">Salt Lake corporate</a>
@@ -317,6 +343,7 @@
           <a href="/wedding-360-booth-orem-lehi-american-fork">Orem, Lehi &amp; American Fork</a>
           <a href="/digital-photo-booth-rental-utah">Digital photo booth</a>
           <a href="/360-photo-booth-rental-salt-lake-city">Salt Lake 360 booth</a>
+          <a href="/360-photo-booth-rental-park-city">Park City</a>
         </div>
       </nav>
     </div>

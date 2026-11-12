@@ -1,4 +1,4 @@
-/* Utah 360 Events — shared motion scripts
+/* Utah 360 Events, shared motion scripts
    No libraries. IntersectionObserver only.
    ─────────────────────────────────────── */
 (function () {
@@ -54,7 +54,7 @@
     }
   });
 
-  /* Observer — once visible, stays visible (unobserve after trigger) */
+  /* Observer, once visible, stays visible (unobserve after trigger) */
   var fadeObs = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
@@ -68,7 +68,7 @@
 
 })();
 
-/* Events menu — not tied to scroll motion */
+/* Events menu, not tied to scroll motion */
 (function () {
   'use strict';
 
