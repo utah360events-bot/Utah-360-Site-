@@ -51,6 +51,24 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/wedding-photo-booth-utah.html"
+  to = "/wedding-photo-booth-utah"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/360-photo-booth-rental-cost-utah.html"
+  to = "/360-photo-booth-rental-cost-utah"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/quinceanera-photo-booth-utah.html"
+  to = "/quinceanera-photo-booth-utah"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/llms.txt"
   [headers.values]
