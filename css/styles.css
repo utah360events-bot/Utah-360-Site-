@@ -2243,6 +2243,7 @@ a, label { -webkit-tap-highlight-color: transparent; }
 
 .reviews-dot.is-active {
   background: var(--ink);
+  color: var(--paper);
   transform: scale(1.3);
 }
 
@@ -2523,7 +2524,8 @@ hr.thin {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--smoke);
+  /* Darker than --smoke (#7A786F, 4.43:1 on white) so this button clears 4.5:1. */
+  color: #706e66;
   background: none;
   border: 0;
   border-radius: 2px;
@@ -2696,6 +2698,60 @@ hr.thin {
 }
 
 .choice-card a:hover { border-bottom-color: var(--ink); }
+
+/* Buttons inside prose and cards keep their own colors and a full border.
+   The link rules above are more specific than .btn-fill / .btn-ghost. */
+.prose a.btn,
+.city-card a.btn,
+.choice-card a.btn {
+  display: inline-flex;
+  border: 1.5px solid;
+}
+
+.prose a.btn-fill,
+.city-card a.btn-fill,
+.choice-card a.btn-fill {
+  color: var(--paper);
+  border: 1.5px solid var(--ink);
+}
+
+.prose a.btn-fill:hover,
+.city-card a.btn-fill:hover,
+.choice-card a.btn-fill:hover {
+  background: #2a2a28;
+  border-color: #2a2a28;
+  color: var(--paper);
+}
+
+.prose a.btn-fill-light,
+.city-card a.btn-fill-light,
+.choice-card a.btn-fill-light {
+  color: var(--ink);
+  border-color: var(--paper);
+}
+
+.prose a.btn-fill-light:hover,
+.city-card a.btn-fill-light:hover,
+.choice-card a.btn-fill-light:hover {
+  background: var(--cream);
+  border-color: var(--cream);
+  color: var(--ink);
+}
+
+.prose a.btn-ghost,
+.city-card a.btn-ghost,
+.choice-card a.btn-ghost {
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+
+.prose a.btn-ghost:hover,
+.city-card a.btn-ghost:hover,
+.choice-card a.btn-ghost:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
 
 .landing-quote {
   margin: 0;
