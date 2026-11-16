@@ -1,5 +1,5 @@
 /* Utah 360 Events, shared motion scripts
-   No libraries. IntersectionObserver only.
+   No libraries. IntersectionObserver.
    ─────────────────────────────────────── */
 (function () {
   'use strict';
