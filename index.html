@@ -128,6 +128,7 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/analytics.js"></script>
   <script defer src="js/main.js"></script>
 </head>
 <body>
@@ -360,13 +361,7 @@
             Example: action="https://formspree.io/f/YOUR_FORM_ID"
           -->
           <form id="home-quote-form" action="https://formspree.io/f/maqzjqal" method="POST">
-            <div data-fs-success class="form-success" style="display:none;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <div>
-                <strong>Thank you! We'll reach out to you shortly.</strong>
-                <p>We typically respond within a few hours. Keep an eye on your inbox!</p>
-              </div>
-            </div>
+            <input type="hidden" name="_next" value="https://utah360events.com/thank-you?form=home-quote-form" />
             <div data-fs-error class="form-error-msg" style="display:none;">Something went wrong. Please try again or call us directly.</div>
             <div class="form-row">
               <div class="form-group">
@@ -399,6 +394,23 @@
               <div class="form-group">
                 <label for="f-date">Event Date</label>
                 <input type="date" id="f-date" name="event_date" data-fs-field />
+              </div>
+            </div>
+            <div class="form-row solo">
+              <div class="form-group">
+                <label for="f-heard-about">How did you hear about us?</label>
+                <select id="f-heard-about" name="heard_about" required data-fs-field>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Google search</option>
+                  <option>Google ad</option>
+                  <option>Instagram</option>
+                  <option>Facebook</option>
+                  <option>TikTok</option>
+                  <option>Referral</option>
+                  <option>Venue/planner</option>
+                  <option>The Knot/WeddingWire</option>
+                  <option>Other</option>
+                </select>
               </div>
             </div>
             <div class="form-row solo">
@@ -773,13 +785,13 @@
     (function () {
       var form      = document.getElementById('home-quote-form');
       if (!form) return;
-      var successEl = form.querySelector('[data-fs-success]');
       var errorEl   = form.querySelector('[data-fs-error]');
       var btn       = form.querySelector('button[type="submit"]');
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         if (btn) btn.disabled = true;
+        if (errorEl) errorEl.style.display = 'none';
 
         fetch(form.action, {
           method:  'POST',
@@ -788,11 +800,7 @@
         })
         .then(function (res) {
           if (res.ok) {
-            form.innerHTML = '';
-            if (successEl) {
-              successEl.style.display = 'flex';
-              form.appendChild(successEl);
-            }
+            window.location = '/thank-you?form=' + encodeURIComponent(form.id || 'inquiry');
           } else {
             if (errorEl) errorEl.style.display = 'block';
             if (btn) btn.disabled = false;

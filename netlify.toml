@@ -52,6 +52,12 @@
   force = true
 
 [[redirects]]
+  from = "/thank-you.html"
+  to = "/thank-you"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/wedding-photo-booth-utah.html"
   to = "/wedding-photo-booth-utah"
   status = 301

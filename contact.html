@@ -40,6 +40,7 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/analytics.js"></script>
   <script defer src="js/main.js"></script>
 </head>
 <body>
@@ -97,6 +98,7 @@
           <p class="form-sub">We'll get back to you with availability, pricing, and everything you need to confirm your booking.</p>
 
           <form id="contact-quote-form" action="https://formspree.io/f/maqzjqal" method="POST">
+            <input type="hidden" name="_next" value="https://utah360events.com/thank-you?form=contact-quote-form" />
             <p class="form-preselect" id="form-preselect" hidden></p>
             <div class="form-date-callout" id="date-callout">
               <p class="form-date-kicker">Your date comes first</p>
@@ -104,13 +106,6 @@
                 <label for="event-date">Event date</label>
                 <input type="date" id="event-date" name="event_date" data-fs-field />
                 <p class="form-date-hint">Send your date and venue and we'll confirm availability.</p>
-              </div>
-            </div>
-            <div data-fs-success class="form-success" style="display:none;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <div>
-                <strong>Thank you! We'll reach out to you shortly.</strong>
-                <p>We typically respond within a few hours. Keep an eye on your inbox!</p>
               </div>
             </div>
             <div data-fs-error class="form-error-msg" style="display:none;">Something went wrong. Please try again or call us directly.</div>
@@ -176,6 +171,24 @@
               <div class="form-group">
                 <label for="location">City / Venue</label>
                 <input type="text" id="location" name="location" placeholder="Provo, The Grand Hall…" data-fs-field />
+              </div>
+            </div>
+
+            <div class="form-row solo">
+              <div class="form-group">
+                <label for="heard-about">How did you hear about us?</label>
+                <select id="heard-about" name="heard_about" required data-fs-field>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Google search</option>
+                  <option>Google ad</option>
+                  <option>Instagram</option>
+                  <option>Facebook</option>
+                  <option>TikTok</option>
+                  <option>Referral</option>
+                  <option>Venue/planner</option>
+                  <option>The Knot/WeddingWire</option>
+                  <option>Other</option>
+                </select>
               </div>
             </div>
 
@@ -332,13 +345,13 @@
     (function () {
       var form      = document.getElementById('contact-quote-form');
       if (!form) return;
-      var successEl = form.querySelector('[data-fs-success]');
       var errorEl   = form.querySelector('[data-fs-error]');
       var btn       = form.querySelector('button[type="submit"]');
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         if (btn) btn.disabled = true;
+        if (errorEl) errorEl.style.display = 'none';
 
         fetch(form.action, {
           method:  'POST',
@@ -347,11 +360,7 @@
         })
         .then(function (res) {
           if (res.ok) {
-            form.innerHTML = '';
-            if (successEl) {
-              successEl.style.display = 'flex';
-              form.appendChild(successEl);
-            }
+            window.location = '/thank-you?form=' + encodeURIComponent(form.id || 'inquiry');
           } else {
             if (errorEl) errorEl.style.display = 'block';
             if (btn) btn.disabled = false;
