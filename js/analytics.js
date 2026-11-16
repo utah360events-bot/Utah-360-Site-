@@ -3,8 +3,8 @@
    place they are set. Every page loads it from the head.
    Placeholder values load nothing and make no network requests.
    See README.md, "Google tag and Ads conversions". */
-window.U360_GTAG_ID = 'G-XXXXXXX';
-window.U360_ADS_CONVERSION_LABEL = 'XXXXXXXX';
+window.U360_GTAG_ID = 'AW-10937757020';
+window.U360_ADS_CONVERSION_LABEL = 'QlktCJ3EmbkdENzaw98o';
 
 (function () {
   'use strict';
