@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <title>Thanks, we got your request | Utah 360 Events</title>
+  <meta name="description" content="Thanks, we got your request. We'll reply by email soon." />
+  <link rel="canonical" href="https://utah360events.com/thank-you" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/analytics.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class='nav-logo' href='/'>
+        <img src="assets/Logo/2.png" alt="Utah 360 Events" />
+      </a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </label>
+      <ul class="nav-links">
+        <li><a href='/'>Home</a></li>
+        <li><a href='/services'>Services</a></li>
+        <li><a href='/about'>About</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li class="nav-dropdown">
+          <button type="button" class="nav-dropdown-label" id="events-menu-label" aria-haspopup="true" aria-expanded="false">Where we serve</button>
+          <ul class="nav-dropdown-menu" aria-labelledby="events-menu-label">
+            <li><a href="/360-photo-booth-provo-wedding">Provo weddings</a></li>
+            <li><a href="/corporate-photo-booth-salt-lake-city">Corporate &amp; Brand Activation</a></li>
+            <li><a href="/holiday-party-photo-booth-utah-county">Holiday parties</a></li>
+            <li><a href="/wedding-360-booth-orem-lehi-american-fork">Orem, Lehi &amp; American Fork</a></li>
+            <li><a href="/digital-photo-booth-rental-utah">Digital photo booth</a></li>
+            <li><a href="/360-photo-booth-rental-salt-lake-city">Salt Lake 360 booth</a></li>
+            <li><a href="/360-photo-booth-rental-park-city">Park City</a></li>
+          </ul>
+        </li>
+        <li><a class='nav-cta' href='/contact#quote-form'>Get a Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-inner">
+        <span class="eyebrow">Request received</span>
+        <h1>Thanks, we got your request.</h1>
+        <p>We'll reply by email soon.</p>
+        <div class="hero-actions" style="margin-top: 1.75rem;">
+          <a class="hero-phone" href="tel:+13854049829">(385) 404-9829</a>
+        </div>
+        <div class="hero-actions" style="margin-top: 1.5rem;">
+          <a class="btn btn-fill" href="/">Homepage</a>
+          <a class="btn btn-ghost" href="/services">Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a class='footer-brand' href='/'>
+          <img src="assets/Logo/2.png" alt="Utah 360 Events" onerror="this.style.display='none'" />
+          <span class="footer-brand-text">Utah 360 Events</span>
+        </a>
+        <nav class="footer-links">
+          <a href='/'>Home</a>
+          <a href='/services'>Services</a>
+          <a href='/about'>About</a>
+          <a href="/faq">FAQ</a>
+          <a href='/contact'>Contact</a>
+        </nav>
+        <p class="footer-copy">© 2026 Utah 360 Events &nbsp;·&nbsp; Utah County, Salt Lake County &amp; Park City</p>
+      </div>
+      <nav class="footer-serve" aria-label="Areas we serve">
+        <p class="footer-serve-label">Areas we serve</p>
+        <div class="footer-serve-links">
+          <a href="/360-photo-booth-provo-wedding">Provo weddings</a>
+          <a href="/corporate-photo-booth-salt-lake-city">Corporate &amp; Brand Activation</a>
+          <a href="/holiday-party-photo-booth-utah-county">Holiday parties</a>
+          <a href="/wedding-360-booth-orem-lehi-american-fork">Orem, Lehi &amp; American Fork</a>
+          <a href="/digital-photo-booth-rental-utah">Digital photo booth</a>
+          <a href="/360-photo-booth-rental-salt-lake-city">Salt Lake 360 booth</a>
+          <a href="/360-photo-booth-rental-park-city">Park City</a>
+        </div>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.__u360ThankYouLead) return;
+      window.__u360ThankYouLead = true;
+      if (typeof window.trackConversion !== 'function') return;
+      var formId = 'thank-you';
+      try {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('form')) formId = params.get('form');
+      } catch (err) {}
+      window.trackConversion('generate_lead', { form: formId });
+    });
+  </script>
+
+</body>
+</html>

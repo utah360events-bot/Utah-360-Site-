@@ -51,6 +51,12 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/thank-you.html"
+  to = "/thank-you"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/llms.txt"
   [headers.values]
