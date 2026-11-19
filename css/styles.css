@@ -3024,3 +3024,168 @@ hr.thin {
     border-color: #F6F5F0;
   }
 }
+
+/* ── HERO BACKGROUND VIDEO ──
+   Portrait spin sits full-height on the right. Copy stays on a dark
+   field at the left so it renders before the file loads. */
+.hero.hero--copy {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #0F0F0E;
+  min-height: 100vh;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #0F0F0E;
+  pointer-events: none;
+}
+
+.hero-bg-video {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  object-position: center center;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 100%);
+}
+
+.hero-bg-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    #0F0F0E 0%,
+    rgba(15, 15, 14, 0.96) 36%,
+    rgba(15, 15, 14, 0.88) 50%,
+    rgba(15, 15, 14, 0.45) 64%,
+    rgba(15, 15, 14, 0.18) 78%,
+    rgba(15, 15, 14, 0.08) 100%
+  );
+}
+
+.hero.hero--copy .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero.hero--copy h1,
+.hero.hero--copy .hero-lead,
+.hero.hero--copy .hero-assurance,
+.hero.hero--copy .hero-location {
+  color: #fff;
+}
+
+.hero.hero--copy .hero-location::before {
+  background: #fff;
+}
+
+.hero.hero--copy .hero-transition a,
+.hero.hero--copy .hero-assurance a {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.hero.hero--copy .hero-actions--equal .btn-hero {
+  background: #fff;
+  color: #0F0F0E;
+  border-color: #fff;
+}
+
+.hero.hero--copy .hero-actions--equal .btn-hero:hover {
+  background: #F6F5F0;
+  color: #0F0F0E;
+  border-color: #F6F5F0;
+}
+
+.hero.hero--copy a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-video {
+    display: none;
+  }
+
+  .hero-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    aspect-ratio: 9 / 16;
+    background: url("../assets/images/hero-spin-poster.jpg") center / cover no-repeat;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 100%);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero.hero--copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 0;
+    padding-top: var(--nav-h);
+  }
+
+  .hero.hero--copy .hero-grid {
+    min-height: 0;
+  }
+
+  .hero.hero--copy .hero-text {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+  }
+
+  .hero-bg-video {
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: center 42%;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .hero-bg-shade {
+    background: linear-gradient(
+      to bottom,
+      rgba(15, 15, 14, 0.34) 0%,
+      rgba(15, 15, 14, 0.55) 18%,
+      rgba(15, 15, 14, 0.88) 36%,
+      rgba(15, 15, 14, 0.94) 52%,
+      rgba(15, 15, 14, 0.97) 100%
+    );
+  }
+}
+
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+  .hero-bg::after {
+    left: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    background-position: center 42%;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
