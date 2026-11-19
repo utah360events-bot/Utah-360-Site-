@@ -168,6 +168,25 @@
 
   <!-- HERO -->
   <section class="hero hero--copy">
+    <div class="hero-bg" aria-hidden="true">
+      <video
+        id="hero-bg-video"
+        class="hero-bg-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        fetchpriority="low"
+        poster="assets/images/hero-spin-poster.jpg"
+        disablepictureinpicture
+        disableremoteplayback
+        tabindex="-1"
+      >
+        <source src="assets/videos/hero-spin.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-bg-shade" aria-hidden="true"></div>
     <div class="container">
       <div class="hero-grid">
 
@@ -183,15 +202,38 @@
           <p class="hero-assurance">Party packages from $750. Custom quotes for companies.</p>
         </div>
 
-        <div class="hero-media">
-          <div class="photo-slot">
-            <img src="assets/images/hero-2.png" alt="360 photo booth rental at a Utah event" onerror="this.style.display='none'" />
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
+  <script>
+  (function () {
+    var video = document.getElementById('hero-bg-video');
+    if (!video) return;
+    var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function applyMotion() {
+      if (motion.matches) {
+        video.pause();
+        video.autoplay = false;
+        video.removeAttribute('autoplay');
+        video.preload = 'none';
+        return;
+      }
+      video.muted = true;
+      video.setAttribute('autoplay', '');
+      video.setAttribute('preload', 'metadata');
+      var pending = video.play();
+      if (pending && typeof pending.catch === 'function') pending.catch(function () {});
+    }
+
+    applyMotion();
+    if (typeof motion.addEventListener === 'function') {
+      motion.addEventListener('change', applyMotion);
+    } else if (typeof motion.addListener === 'function') {
+      motion.addListener(applyMotion);
+    }
+  })();
+  </script>
 
   <section class="problem-band">
     <div class="container">
