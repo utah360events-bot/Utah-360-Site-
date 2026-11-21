@@ -78,32 +78,71 @@
         <button type="button" class="work-filter" data-filter="parties" aria-pressed="false" aria-controls="work-stage">Parties</button>
       </div>
 
-      <!--
-        CLIPS: stand-ins until the social team sends final videos. These will be replaced.
-        To swap a clip, edit that card: data-src, both poster paths, data-category, caption, and tag.
-        reel-1 Corporate, reel-2 Corporate, reel-3 Parties, reel-4 Parties, reel-5 Parties.
-        The coverflow reads these cards. Without JavaScript they stack so every clip still shows.
-      -->
       <div class="work-stage" id="work-stage">
         <div class="work-viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Event videos">
           <button type="button" class="work-arrow work-arrow-prev" aria-label="Previous clip"><span aria-hidden="true">&#8592;</span></button>
           <ul class="work-track">
 
+        <li class="work-card" data-category="weddings">
+          <div class="ig-card">
+            <img class="work-poster" src="assets/images/work/01-wedding-reception.jpg" alt="" width="720" height="1280" />
+            <video muted loop playsinline preload="none" poster="assets/images/work/01-wedding-reception.jpg" data-src="assets/videos/work/01-wedding-reception.mp4" aria-hidden="true"></video>
+          </div>
+          <p class="work-caption">Wedding reception, Utah</p>
+          <span class="event-tag">Weddings</span>
+        </li>
+
         <li class="work-card" data-category="corporate">
+          <div class="ig-card">
+            <img class="work-poster" src="assets/images/work/03-corporate-teamhealth.jpg" alt="" width="720" height="1280" />
+            <video muted loop playsinline preload="none" poster="assets/images/work/03-corporate-teamhealth.jpg" data-src="assets/videos/work/03-corporate-teamhealth.mp4" aria-hidden="true"></video>
+          </div>
+          <p class="work-caption">TEAMHealth corporate party, Salt Lake City</p>
+          <span class="event-tag">Corporate</span>
+        </li>
+
+        <li class="work-card" data-category="parties">
           <div class="ig-card">
             <img class="work-poster" src="assets/images/work/reel-1.jpg" alt="" width="640" height="1138" />
             <video muted loop playsinline preload="none" poster="assets/images/work/reel-1.jpg" data-src="assets/videos/reel-1.mp4" aria-hidden="true"></video>
           </div>
           <p class="work-caption">Two guests on an indoor platform, with a branded overlay, as paper falls around them.</p>
-          <span class="event-tag">Corporate</span>
+          <span class="event-tag">Parties</span>
+        </li>
+
+        <li class="work-card" data-category="weddings">
+          <div class="ig-card">
+            <img class="work-poster" src="assets/images/work/02-wedding-reception-day.jpg" alt="" width="720" height="1280" loading="lazy" />
+            <video muted loop playsinline preload="none" poster="assets/images/work/02-wedding-reception-day.jpg" data-src="assets/videos/work/02-wedding-reception-day.mp4" aria-hidden="true"></video>
+          </div>
+          <p class="work-caption">Wedding reception, Utah</p>
+          <span class="event-tag">Weddings</span>
         </li>
 
         <li class="work-card" data-category="corporate">
           <div class="ig-card">
-            <img class="work-poster" src="assets/images/work/reel-2.jpg" alt="" width="640" height="1138" />
+            <img class="work-poster" src="assets/images/work/04-corporate-teamhealth-dance.jpg" alt="" width="720" height="1280" loading="lazy" />
+            <video muted loop playsinline preload="none" poster="assets/images/work/04-corporate-teamhealth-dance.jpg" data-src="assets/videos/work/04-corporate-teamhealth-dance.mp4" aria-hidden="true"></video>
+          </div>
+          <p class="work-caption">TEAMHealth corporate party, Salt Lake City</p>
+          <span class="event-tag">Corporate</span>
+        </li>
+
+        <li class="work-card" data-category="parties">
+          <div class="ig-card">
+            <img class="work-poster" src="assets/images/work/reel-2.jpg" alt="" width="640" height="1138" loading="lazy" />
             <video muted loop playsinline preload="none" poster="assets/images/work/reel-2.jpg" data-src="assets/videos/reel-2.mp4" aria-hidden="true"></video>
           </div>
           <p class="work-caption">Guests on an outdoor platform beside a red carpet, with cars and mountains behind them.</p>
+          <span class="event-tag">Parties</span>
+        </li>
+
+        <li class="work-card" data-category="corporate">
+          <div class="ig-card">
+            <img class="work-poster" src="assets/images/work/05-corporate-wellth.jpg" alt="" width="720" height="1280" loading="lazy" />
+            <video muted loop playsinline preload="none" poster="assets/images/work/05-corporate-wellth.jpg" data-src="assets/videos/work/05-corporate-wellth.mp4" aria-hidden="true"></video>
+          </div>
+          <p class="work-caption">WELLth corporate party, Utah</p>
           <span class="event-tag">Corporate</span>
         </li>
 
@@ -116,6 +155,15 @@
           <span class="event-tag">Parties</span>
         </li>
 
+        <li class="work-card" data-category="corporate">
+          <div class="ig-card">
+            <img class="work-poster" src="assets/images/work/06-corporate-awardco-deervalley.jpg" alt="" width="720" height="1280" loading="lazy" />
+            <video muted loop playsinline preload="none" poster="assets/images/work/06-corporate-awardco-deervalley.jpg" data-src="assets/videos/work/06-corporate-awardco-deervalley.mp4" aria-hidden="true"></video>
+          </div>
+          <p class="work-caption">Corporate party, Deer Valley</p>
+          <span class="event-tag">Corporate</span>
+        </li>
+
         <li class="work-card" data-category="parties">
           <div class="ig-card">
             <img class="work-poster" src="assets/images/work/reel-4.jpg" alt="" width="480" height="854" loading="lazy" />
@@ -123,6 +171,15 @@
           </div>
           <p class="work-caption">Guests in patterned outfits posing outdoors under the trees.</p>
           <span class="event-tag">Parties</span>
+        </li>
+
+        <li class="work-card" data-category="corporate">
+          <div class="ig-card">
+            <img class="work-poster" src="assets/images/work/07-corporate-teamhealth-friends.jpg" alt="" width="720" height="1280" loading="lazy" />
+            <video muted loop playsinline preload="none" poster="assets/images/work/07-corporate-teamhealth-friends.jpg" data-src="assets/videos/work/07-corporate-teamhealth-friends.mp4" aria-hidden="true"></video>
+          </div>
+          <p class="work-caption">TEAMHealth corporate party, Salt Lake City</p>
+          <span class="event-tag">Corporate</span>
         </li>
 
         <li class="work-card" data-category="parties">
@@ -144,7 +201,7 @@
         <div class="work-dots" id="work-dots" role="group" aria-label="Choose a clip"></div>
       </div>
 
-      <p id="work-empty" class="work-empty" hidden>Wedding clips are on the way. Company events and parties are here to watch.</p>
+      <p id="work-empty" class="work-empty" hidden>No clips in this set yet.</p>
     </div>
   </section>
 
