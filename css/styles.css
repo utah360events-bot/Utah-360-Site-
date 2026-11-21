@@ -3189,3 +3189,74 @@ hr.thin {
     mask-image: none;
   }
 }
+
+/* Gold 5.0 proof. Bright gold on the dark hero. Darker gold on cream and paper so the stars stay readable. */
+.hero-google {
+  margin: 0 0 1.05rem;
+}
+
+.hero.hero--copy .hero-google a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  border-bottom: 0;
+}
+
+.hero.hero--copy .hero-google a:hover {
+  color: #fff;
+  opacity: 0.88;
+}
+
+.hero.hero--copy .hero-google-stars {
+  color: #F4B942;
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+}
+
+a.trust-bar-google {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+a.trust-bar-google .trust-bar-stars {
+  color: #8A6500;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+}
+
+#reviews {
+  scroll-margin-top: calc(var(--nav-h) + 0.75rem);
+}
+
+.form-google {
+  margin: 1.25rem 0 0.75rem;
+  text-align: center;
+}
+
+.form-google a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.form-google a:hover {
+  color: var(--ink);
+}
+
+.form-google-stars {
+  color: #8A6500;
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+}
+
+.form-google + .form-submit {
+  margin-top: 0;
+}

@@ -194,6 +194,12 @@
           <span class="hero-location">Utah County · Salt Lake County · Park City</span>
           <h1>360 Video Booth Rental for Utah Parties and Company Events</h1>
           <p class="hero-lead">Your whole group, in one slow-motion video, sent straight to their phones.</p>
+          <p class="hero-google">
+            <a href="#reviews">
+              <span class="hero-google-stars" aria-hidden="true">★★★★★</span>
+              5.0 on Google
+            </a>
+          </p>
           <div class="hero-actions hero-actions--equal">
             <a href="/services#booth-360" class="btn btn-hero">See Party Packages</a>
             <a href="/corporate-photo-booth-salt-lake-city#quote-form" class="btn btn-hero">Get a Corporate Quote</a>
@@ -245,10 +251,10 @@
   <div class="trust-bar" aria-label="Social proof highlights">
     <div class="container">
       <div class="trust-bar-inner">
-        <span class="trust-bar-item">
-          <span class="trust-bar-stars">★★★★★</span>
+        <a class="trust-bar-item trust-bar-google" href="#reviews">
+          <span class="trust-bar-stars" aria-hidden="true">★★★★★</span>
           5.0 on Google
-        </span>
+        </a>
         <span class="trust-sep">·</span>
         <span class="trust-bar-item">50+ events delivered</span>
         <span class="trust-sep">·</span>
@@ -446,6 +452,12 @@
                 <textarea id="f-message" name="message" placeholder="Event location, guest count, questions about pricing…" data-fs-field></textarea>
               </div>
             </div>
+            <p class="form-google">
+              <a href="#reviews">
+                <span class="form-google-stars" aria-hidden="true">★★★★★</span>
+                5.0 on Google
+              </a>
+            </p>
             <div class="form-submit">
               <button type="submit" class="btn btn-fill" data-fs-submit-btn>Send My Inquiry</button>
             </div>
@@ -531,124 +543,8 @@
     </div>
   </section>
 
-  <!-- Sticky booking bar controller -->
-  <script>
-  (function () {
-    var bar  = document.getElementById('sticky-bar');
-    var hero = document.querySelector('.hero');
-    var form = document.getElementById('quote-form');
-    if (!bar || !hero) return;
-
-    var heroGone = false, formVisible = false;
-
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.target === hero) heroGone  = !e.isIntersecting;
-        if (e.target === form) formVisible = e.isIntersecting;
-      });
-      bar.classList.toggle('is-visible', heroGone && !formVisible);
-    }, { threshold: 0 });
-
-    obs.observe(hero);
-    if (form) obs.observe(form);
-  })();
-  </script>
-
-  <!-- Center-focus carousel controller, vanilla JS, no libraries -->
-  <script>
-  (function() {
-    var scroll = document.getElementById('ig-scroll');
-    var slides = document.querySelectorAll('.ig-slide');
-    if (!scroll || !slides.length) return;
-
-    var timer       = null;
-    var programmatic = false; // true while an arrow-click scroll is animating
-
-    /* Apply is-active to one specific slide */
-    function setActive(slide) {
-      slides.forEach(function(s) { s.classList.toggle('is-active', s === slide); });
-    }
-
-    /* Find the slide whose center is nearest the scroll-container's center */
-    function findNearest() {
-      var sr   = scroll.getBoundingClientRect();
-      var smid = sr.left + sr.width / 2;
-      var best = null, minD = Infinity;
-      slides.forEach(function(s) {
-        var r = s.getBoundingClientRect();
-        var d = Math.abs((r.left + r.width / 2) - smid);
-        if (d < minD) { minD = d; best = s; }
-      });
-      return best;
-    }
-
-    /* Scroll event, used for finger-swipe; ignored during arrow scrolls */
-    var ticking = false;
-    scroll.addEventListener('scroll', function() {
-      if (programmatic) return;
-      if (!ticking) {
-        requestAnimationFrame(function() { setActive(findNearest()); ticking = false; });
-        ticking = true;
-      }
-    }, { passive: true });
-
-    scroll.addEventListener('scrollend', function() {
-      if (!programmatic) setActive(findNearest());
-    });
-
-    /* Scroll a target slide to center.
-       Immediately marks it active so there is zero visual delay. */
-    function goTo(slide) {
-      if (!slide) return;
-      if (timer) clearTimeout(timer);
-
-      /* Lock out the scroll-event handler so mid-animation events
-         cannot override the slide we just chose */
-      programmatic = true;
-      setActive(slide); // instant visual update
-
-      var r   = slide.getBoundingClientRect();
-      var sr  = scroll.getBoundingClientRect();
-      var pos = r.left - sr.left + scroll.scrollLeft; // content-space left edge
-      var target = pos - (scroll.offsetWidth - slide.offsetWidth) / 2;
-      scroll.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
-
-      /* Unlock after animation (≈300–400 ms); re-verify position */
-      timer = setTimeout(function() {
-        programmatic = false;
-        setActive(findNearest());
-      }, 500);
-    }
-
-    function activeIdx() {
-      var idx = 0;
-      slides.forEach(function(s, i) { if (s.classList.contains('is-active')) idx = i; });
-      return idx;
-    }
-
-    var prev = document.querySelector('.ig-arrow-prev');
-    var next = document.querySelector('.ig-arrow-next');
-    if (prev) prev.addEventListener('click', function() {
-      goTo(slides[Math.max(0, activeIdx() - 1)]);
-    });
-    if (next) next.addEventListener('click', function() {
-      goTo(slides[Math.min(slides.length - 1, activeIdx() + 1)]);
-    });
-
-    /* Start on slide 2, instant jump, no animation */
-    window.addEventListener('load', function() {
-      var s  = slides[1];
-      var r  = s.getBoundingClientRect();
-      var sr = scroll.getBoundingClientRect();
-      var pos = r.left - sr.left + scroll.scrollLeft;
-      scroll.scrollLeft = pos - (scroll.offsetWidth - s.offsetWidth) / 2;
-      setActive(s);
-    });
-  })();
-  </script>
-
   <!-- GOOGLE REVIEWS CAROUSEL -->
-  <section class="reviews-section">
+  <section class="reviews-section" id="reviews">
     <div class="container">
 
       <div class="reviews-header">
@@ -790,6 +686,122 @@
         ticking = false;
       });
     }, { passive: true });
+  })();
+  </script>
+
+  <!-- Sticky booking bar controller -->
+  <script>
+  (function () {
+    var bar  = document.getElementById('sticky-bar');
+    var hero = document.querySelector('.hero');
+    var form = document.getElementById('quote-form');
+    if (!bar || !hero) return;
+
+    var heroGone = false, formVisible = false;
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.target === hero) heroGone  = !e.isIntersecting;
+        if (e.target === form) formVisible = e.isIntersecting;
+      });
+      bar.classList.toggle('is-visible', heroGone && !formVisible);
+    }, { threshold: 0 });
+
+    obs.observe(hero);
+    if (form) obs.observe(form);
+  })();
+  </script>
+
+  <!-- Center-focus carousel controller, vanilla JS, no libraries -->
+  <script>
+  (function() {
+    var scroll = document.getElementById('ig-scroll');
+    var slides = document.querySelectorAll('.ig-slide');
+    if (!scroll || !slides.length) return;
+
+    var timer       = null;
+    var programmatic = false; // true while an arrow-click scroll is animating
+
+    /* Apply is-active to one specific slide */
+    function setActive(slide) {
+      slides.forEach(function(s) { s.classList.toggle('is-active', s === slide); });
+    }
+
+    /* Find the slide whose center is nearest the scroll-container's center */
+    function findNearest() {
+      var sr   = scroll.getBoundingClientRect();
+      var smid = sr.left + sr.width / 2;
+      var best = null, minD = Infinity;
+      slides.forEach(function(s) {
+        var r = s.getBoundingClientRect();
+        var d = Math.abs((r.left + r.width / 2) - smid);
+        if (d < minD) { minD = d; best = s; }
+      });
+      return best;
+    }
+
+    /* Scroll event, used for finger-swipe; ignored during arrow scrolls */
+    var ticking = false;
+    scroll.addEventListener('scroll', function() {
+      if (programmatic) return;
+      if (!ticking) {
+        requestAnimationFrame(function() { setActive(findNearest()); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    scroll.addEventListener('scrollend', function() {
+      if (!programmatic) setActive(findNearest());
+    });
+
+    /* Scroll a target slide to center.
+       Immediately marks it active so there is zero visual delay. */
+    function goTo(slide) {
+      if (!slide) return;
+      if (timer) clearTimeout(timer);
+
+      /* Lock out the scroll-event handler so mid-animation events
+         cannot override the slide we just chose */
+      programmatic = true;
+      setActive(slide); // instant visual update
+
+      var r   = slide.getBoundingClientRect();
+      var sr  = scroll.getBoundingClientRect();
+      var pos = r.left - sr.left + scroll.scrollLeft; // content-space left edge
+      var target = pos - (scroll.offsetWidth - slide.offsetWidth) / 2;
+      scroll.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+
+      /* Unlock after animation (≈300–400 ms); re-verify position */
+      timer = setTimeout(function() {
+        programmatic = false;
+        setActive(findNearest());
+      }, 500);
+    }
+
+    function activeIdx() {
+      var idx = 0;
+      slides.forEach(function(s, i) { if (s.classList.contains('is-active')) idx = i; });
+      return idx;
+    }
+
+    var prev = document.querySelector('.ig-arrow-prev');
+    var next = document.querySelector('.ig-arrow-next');
+    if (prev) prev.addEventListener('click', function() {
+      goTo(slides[Math.max(0, activeIdx() - 1)]);
+    });
+    if (next) next.addEventListener('click', function() {
+      goTo(slides[Math.min(slides.length - 1, activeIdx() + 1)]);
+    });
+
+    /* Start on slide 2, instant jump, no animation */
+    window.addEventListener('load', function() {
+      var s  = slides[1];
+      var r  = s.getBoundingClientRect();
+      var sr = scroll.getBoundingClientRect();
+      var pos = r.left - sr.left + scroll.scrollLeft;
+      scroll.scrollLeft = pos - (scroll.offsetWidth - s.offsetWidth) / 2;
+      setActive(s);
+    });
   })();
   </script>
 
