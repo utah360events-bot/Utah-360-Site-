@@ -2436,6 +2436,11 @@ hr.thin {
     flex-direction: column;
     gap: 0.125rem;
     z-index: 99;
+    /* One more nav item makes this taller than a phone screen. Let it scroll. */
+    max-height: calc(100vh - var(--nav-h));
+    max-height: calc(100dvh - var(--nav-h));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .nav-links li a { display: block; padding: 0.75rem 0.5rem; font-size: 0.88rem; min-height: 44px; display: flex; align-items: center; }
   .nav-links li a.nav-cta { margin-left: 0; margin-top: 0.5rem; justify-content: center; }
@@ -3023,4 +3028,279 @@ hr.thin {
     color: #0F0F0E;
     border-color: #F6F5F0;
   }
+}
+
+/* ── OUR WORK ── */
+.work-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.work-filter {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  border: 1.5px solid var(--ink);
+  border-radius: 2px;
+  padding: 0.65rem 1.15rem;
+  min-height: 44px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.work-filter[aria-pressed="true"],
+.work-filter:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.work-filter:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* Without JS the clips stack. The coverflow takes over once .is-ready is set. */
+.work-track {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.25rem 1.25rem;
+  list-style: none;
+}
+
+.work-arrow,
+.work-dots,
+.work-live { display: none; }
+
+.work-card .ig-card {
+  background: #111;
+  border-radius: 18px;
+}
+
+.work-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.work-card video { z-index: 1; }
+
+.work-card video:not([src]) { opacity: 0; }
+
+/* Neighbors stay on the poster. The centered clip is the one that plays. */
+.work-stage.is-ready .work-card:not(.is-active) video { opacity: 0; }
+
+.work-caption {
+  margin-top: 0.85rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.work-card .event-tag {
+  display: inline-block;
+  margin-top: 0.65rem;
+}
+
+.work-empty {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: var(--smoke);
+  max-width: 36rem;
+}
+
+.work-stage.is-ready .work-viewport {
+  position: relative;
+  overflow: hidden;
+  perspective: 1400px;
+  touch-action: pan-y;
+}
+
+.work-stage.is-ready .work-track {
+  position: relative;
+  display: block;
+  height: 100%;
+  margin: 0;
+  transform-style: preserve-3d;
+}
+
+.work-stage.is-ready .work-card {
+  position: absolute;
+  left: 50%;
+  width: var(--work-card-w, 320px);
+  margin: 0;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.work-stage.is-animated .work-card {
+  transition: transform 0.65s cubic-bezier(0.22, 0.8, 0.3, 1), opacity 0.65s ease;
+}
+
+.work-stage.is-dragging .work-card { transition: none; }
+
+.work-stage.is-ready .work-card .ig-card {
+  height: 100%;
+  aspect-ratio: auto;
+  box-shadow: 0 10px 24px rgba(15, 15, 14, 0.08);
+}
+
+.work-stage.is-ready .work-card.is-active .ig-card {
+  box-shadow:
+    0 28px 60px rgba(15, 15, 14, 0.24),
+    0 0 0 1px rgba(255, 255, 255, 0.4),
+    0 0 64px rgba(15, 15, 14, 0.12);
+}
+
+.work-stage.is-ready .work-card .work-caption,
+.work-stage.is-ready .work-card .event-tag { display: none; }
+
+.work-stage.is-ready .work-live {
+  display: block;
+  text-align: center;
+  max-width: 38rem;
+  margin: 0.35rem auto 0;
+  min-height: 6.4rem;
+  transition: opacity 0.35s ease;
+}
+
+.work-live.is-out { opacity: 0; }
+
+.work-live .work-caption { margin-top: 0; }
+
+.work-live .event-tag { margin-top: 0.8rem; }
+
+.work-stage.is-ready .work-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  z-index: 40;
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.work-stage.is-ready .work-arrow[hidden] { display: none; }
+
+.work-arrow-prev { left: 0.25rem; }
+.work-arrow-next { right: 0.25rem; }
+
+.work-arrow:hover { background: var(--ink); color: var(--paper); }
+
+.work-arrow:focus-visible,
+.work-dot:focus-visible,
+.work-viewport:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.work-stage.is-ready .work-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.15rem;
+  margin-top: 0.25rem;
+}
+
+.work-stage.is-ready .work-dots[hidden] { display: none; }
+
+.work-dot {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--stone);
+  transition: width 0.35s var(--ease), background 0.35s var(--ease);
+}
+
+.work-dot[aria-current="true"]::before {
+  width: 22px;
+  background: var(--ink);
+}
+
+.work-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.ig-header-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.7rem;
+  flex-shrink: 0;
+}
+
+@media (min-width: 700px) {
+  .work-stage:not(.is-ready) .work-track { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+  .work-stage:not(.is-ready) .work-track { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+@media (max-width: 699px) {
+  .work-stage.is-ready .work-arrow { display: none; }
+}
+
+/* Extra nav item still fits on a laptop. Tighten before the hamburger breakpoint. */
+@media (min-width: 769px) and (max-width: 1100px) {
+  .nav-inner { gap: 1rem; padding-inline: 1.25rem; }
+  .nav-logo img { width: 112px; }
+  .nav-links { gap: 0; }
+  .nav-links li a {
+    padding: 0.45rem 0.4rem;
+    letter-spacing: 0.04em;
+    font-size: 0.72rem;
+  }
+  .nav-dropdown-label {
+    padding: 0.45rem 0.4rem;
+    letter-spacing: 0.04em;
+    font-size: 0.72rem;
+  }
+  .nav-links li a.nav-cta {
+    margin-left: 0.25rem;
+    padding: 0.45rem 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ig-header-links { align-items: flex-start; }
+  .work-cta-actions { flex-direction: column; align-items: stretch; }
+  .work-cta-actions .btn { justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-stage.is-animated .work-card,
+  .work-live { transition: none; }
+  .work-card video { display: none; }
 }
